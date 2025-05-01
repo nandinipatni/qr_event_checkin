@@ -38,4 +38,43 @@ A backend system for managing college event check-ins using QR codes — built w
 ```bash
 git clone https://github.com/nandinipatni/qr_event_checkin.git
 cd qr_event_checkin
+2. Create Virtual Environment
+bash
+Copy
+Edit
+python -m venv venv
+venv\Scripts\activate  # On Windows
+3. Install Dependencies
+bash
+Copy
+Edit
+pip install -r requirements.txt
+4. Configure .env
+Create a .env file based on .env.example:
 
+bash
+Copy
+Edit
+cp .env.example .env
+Fill in:
+
+env
+Copy
+Edit
+DATABASE_URL=postgresql://username:password@localhost/dbname
+SECRET_KEY=your-secret-key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+5. Run Migrations
+If using Alembic or SQLAlchemy:
+
+bash
+Copy
+Edit
+alembic upgrade head  # Optional if you've setup migrations
+6. Start the Server
+bash
+Copy
+Edit
+uvicorn app.main:app --reload
+Go to: http://127.0.0.1:8000/docs
